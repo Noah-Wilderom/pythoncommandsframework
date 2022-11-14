@@ -6,7 +6,8 @@ def set(configFile):
 
     if file.is_file():
         configData = getConfig(configFile)
-        print('Config file loaded')
+        if configData['debug']:
+        	print("Config file loaded")
 
         return configData
 
