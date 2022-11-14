@@ -68,8 +68,8 @@ class Controller:
 
     def listCommands(self):
         if len(self.commands) < 1: return sys.exit(f"Failed loading any commands")
+        print("\n\n")
         for i in range(0, len(self.commands)):
-            print("\n\n")
             print(f"[{i}] {self.commands[i]}")
         print("\n\n")
 
