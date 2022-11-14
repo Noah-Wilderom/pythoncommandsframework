@@ -13,6 +13,14 @@ class Controller:
 
         self.print('App starting...')
 
+    def run(self):
+        console.clear()
+
+        self.displayStats()
+
+        self.loadCommands()
+
+
 
     def displayStats(self):
         for x in self.getStats():
@@ -39,12 +47,6 @@ class Controller:
 
         # print(f"Config file not found: {self.options['configFile']}")
         return sys.exit(f"Config file not found: {self.options['configFile']}")
-
-    def run(self):
-        console.clear()
-
-        self.displayStats()
-
 
     def formatArgs(self, args):
         return args
