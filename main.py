@@ -15,4 +15,4 @@ def main(*, args, options=None):
 	obj.run()
 
 
-main(args=sys.argv, options=settings) if __name__ == '__main__' else os.exit("Please start the 'main.py' file")
+main(args=sys.argv, options=settings) if __name__ == '__main__' else sys.exit("Please start the 'main.py' file")
