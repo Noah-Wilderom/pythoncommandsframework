@@ -2,6 +2,7 @@
 
 import sys, os
 from src.lib.Controller import Controller
+from src.helpers import *
 
 settings = {
 	"configFile": "./config.json"

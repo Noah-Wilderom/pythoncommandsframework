@@ -1,4 +1,9 @@
 {
+    "name": "Template",
     "debug": true,
-    "cache": false
+    "cache": false,
+    "commandBlacklist": [
+        "__init__",
+        "__pycache__"
+    ]
 }
