@@ -1,4 +1,4 @@
-import sys, os
+import sys, os, json
 import platform
 from pathlib import Path
 from src.helpers import *
@@ -9,12 +9,14 @@ class Controller:
     def __init__(self, args, options=None):
         self.args = self.formatArgs(args)
         self.options = self.setOptions(options)
-        print('App starting...')
+        self.setConfig()
+
+        self.print('App starting...')
 
 
     def displayStats(self):
         for x in self.getStats():
-            print(f"{x['name']}: {x['value']}")
+            self.print(f"{x['name']}: {x['value']}")
 
     def getStats(self):
         stats = [
@@ -30,7 +32,9 @@ class Controller:
         file = Path(self.options['configFile'])
 
         if file.is_file():
-            print('Config file loaded')
+            self.configData = self.getConfig()
+            self.print('Config file loaded')
+
             return True
 
         # print(f"Config file not found: {self.options['configFile']}")
@@ -38,8 +42,6 @@ class Controller:
 
     def run(self):
         console.clear()
-
-        self.setConfig()
 
         self.displayStats()
 
@@ -49,3 +51,21 @@ class Controller:
 
     def setOptions(self, options):
         return options
+
+    def print(self, *args):
+        if self.config('debug'):
+            for x in args:
+                print(x)
+        pass
+
+    def getConfig(self):
+        with open(self.options['configFile']) as file:
+            data = file.read()
+
+        return json.loads(data)
+
+    def config(self, key):
+        if self.configData is None:
+            return False
+
+        return self.configData[key]

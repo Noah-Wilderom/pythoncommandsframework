@@ -4,9 +4,7 @@ import sys, os
 from src.lib.Controller import Controller
 
 settings = {
-	"debug": True,
-	"cache": False,
-	"configFile": "./config.py"
+	"configFile": "./config.json"
 }
 
 def main(*, args, options=None):
